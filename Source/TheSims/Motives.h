@@ -31,6 +31,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetRegenState(FGameplayTag Motive, bool RegenState);
 
+	UFUNCTION(BlueprintCallable)
+	bool IsFull(FGameplayTag Motive) const;
+
 private:
 	FGameplayTag Fun = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Fun"));
 	FGameplayTag Energy = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Energy"));

@@ -58,3 +58,8 @@ void UMotives::SetRegenState(FGameplayTag Motive, bool RegenState)
 {
 	Motives[Motive].second = RegenState;
 }
+
+bool UMotives::IsFull(FGameplayTag Motive) const
+{
+	return Motives[Motive].first >= 99.f;
+}
