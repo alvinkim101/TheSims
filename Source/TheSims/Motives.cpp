@@ -63,3 +63,8 @@ bool UMotives::IsFull(FGameplayTag Motive) const
 {
 	return Motives[Motive].first >= 99.f;
 }
+
+float UMotives::GetMotivePercent(FGameplayTag Motive) const
+{
+	return Motives[Motive].first / Max;
+}

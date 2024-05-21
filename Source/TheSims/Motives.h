@@ -34,6 +34,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsFull(FGameplayTag Motive) const;
 
+	UFUNCTION(BlueprintCallable)
+	float GetMotivePercent(FGameplayTag Motive) const;
+
 private:
 	FGameplayTag Fun = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Fun"));
 	FGameplayTag Energy = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Energy"));
