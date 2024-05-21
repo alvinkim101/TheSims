@@ -7,7 +7,7 @@
 #include "GameplayTagsManager.h"
 #include "Motives.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( Blueprintable, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class THESIMS_API UMotives : public UActorComponent
 {
 	GENERATED_BODY()
