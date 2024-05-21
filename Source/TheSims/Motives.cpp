@@ -37,7 +37,7 @@ void UMotives::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		}
 		else
 		{
-			Motive.Value.first = UKismetMathLibrary::FMax(Motive.Value.first - Rate * DeltaTime, -Max);
+			Motive.Value.first = UKismetMathLibrary::FMax(Motive.Value.first - Rate * DeltaTime, 0.f);
 		}
 	}
 }
