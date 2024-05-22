@@ -3,6 +3,7 @@
 
 #include "Motives.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Math/UnrealMathUtility.h"
 
 // Sets default values for this component's properties
 UMotives::UMotives()
@@ -44,7 +45,7 @@ void UMotives::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 FGameplayTag UMotives::ChooseMotive() const
 {
-	if (Motives[Energy].first < 0)
+	if (FMath::IsNearlyEqual(Motives[Energy].first, 0.f))
 	{
 		return Energy;
 	}
@@ -61,7 +62,7 @@ void UMotives::SetRegenState(FGameplayTag Motive, bool RegenState)
 
 bool UMotives::IsFull(FGameplayTag Motive) const
 {
-	return Motives[Motive].first >= 99.f;
+	return FMath::IsNearlyEqual(Motives[Motive].first, Max);
 }
 
 float UMotives::GetMotivePercent(FGameplayTag Motive) const
