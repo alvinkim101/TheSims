@@ -45,11 +45,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float GetMotivePercent(FGameplayTag Motive) const;
 
-private:
-	#define X(motive) FGameplayTag motive = UGameplayTagsManager::Get().RequestGameplayTag(TEXT(STRINGIZE(Motive.motive)));
-	MOTIVES
-	#undef X
-
+protected:
 	// Rate at which motive regens / decays
 	UPROPERTY(EditDefaultsOnly)
 	float Rate = 1.f;
@@ -57,6 +53,11 @@ private:
 	// Max value of motive
 	UPROPERTY(EditDefaultsOnly)
 	float Max = 100.f;
+
+private:
+	#define X(motive) FGameplayTag motive = UGameplayTagsManager::Get().RequestGameplayTag(TEXT(STRINGIZE(Motive.motive)));
+	MOTIVES
+	#undef X
 
 	// Key: motive name, Value: motive value and whether it is regenerating or not
 	TMap<FGameplayTag, std::pair<float, bool>> Motives {
