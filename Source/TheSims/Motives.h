@@ -7,6 +7,12 @@
 #include "GameplayTagsManager.h"
 #include "Motives.generated.h"
 
+#define STRINGIZE(s) #s
+
+#define MOTIVES \
+	X(Fun) \
+	X(Energy)
+
 UCLASS( Blueprintable, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class THESIMS_API UMotives : public UActorComponent
 {
@@ -38,8 +44,9 @@ public:
 	float GetMotivePercent(FGameplayTag Motive) const;
 
 private:
-	FGameplayTag Fun = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Fun"));
-	FGameplayTag Energy = UGameplayTagsManager::Get().RequestGameplayTag(TEXT("Motive.Energy"));
+	#define X(motive) FGameplayTag motive = UGameplayTagsManager::Get().RequestGameplayTag(TEXT(STRINGIZE(Motive.motive)));
+	MOTIVES
+	#undef X
 
 	// Rate at which motive regens / decays
 	UPROPERTY(EditDefaultsOnly)
@@ -51,7 +58,8 @@ private:
 
 	// Key: motive name, Value: motive value and whether it is regenerating or not
 	TMap<FGameplayTag, std::pair<float, bool>> Motives {
-		{ Fun, { Max, false } },
-		{ Energy, { Max, false } },
+		#define X(motive) { motive, { Max, false } },
+		MOTIVES
+		#undef X
 	};
 };
