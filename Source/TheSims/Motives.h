@@ -10,6 +10,8 @@
 #define STRINGIZE(s) #s
 
 #define MOTIVES \
+	X(Hunger) \
+	X(Social) \
 	X(Fun) \
 	X(Energy)
 
